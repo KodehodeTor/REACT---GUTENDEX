@@ -4,6 +4,12 @@ import { useState, useEffect } from "react";
 function App() {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchItem, setSearchItem] = useState(``);
+
+  const handleInputChange = (e) => {
+    const searchTerm = e.target.value;
+    setSearchItem(searchTerm);
+  };
 
   useEffect(() => {
     fetch("https://gutendex.com/books/")
@@ -19,6 +25,14 @@ function App() {
   return (
     <div className="app">
       <h1>Project Gutendex</h1>
+      <div>
+        <input
+          type="text"
+          value={searchItem}
+          onChange={handleInputChange}
+          placeholder="Type to search"
+        />
+      </div>
       <ul>
         {books.map((book) => (
           <li key={book.id}>
