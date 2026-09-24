@@ -1,14 +1,28 @@
 import { useState, useEffect } from "react";
+import UseFetchBook from "./hooks/useFetchBook.jsx";
+import BookDetails from "./pages/BookDetail.jsx";
+import BookFavorites from "./pages/BookFavorites.jsx";
+import Home from "./pages/Home.jsx";
 
-const [searchItem, setSearchItem] = useState(``);
+
+export default function App() {
+  const [searchItem, setSearchItem] = useState(``);
+  const {books, loading, error } = useFetchBook();
+
+
+
 const handleInputChange = (e) => {
   const searchTerm = e.target.value;
   setSearchItem(searchTerm);
 };
 
-if (loading) return <div>Loading books...</div>;
+//Filter books down based on the user type in search bar
+const filteredBooks = books.filter((book) => book.title.toLowerCase().includes(searchItem.toLowerCase())
+);
 
-function App() {
+if (loading) return <div>Loading books...</div>;
+if (error) return <div>Error: {error}</div>
+
   return (
     <div className="app">
       <h1>Project Gutendex</h1>
@@ -20,16 +34,11 @@ function App() {
           placeholder="Type to search"
         />
       </div>
-      <ul>
-        {books.map((book) => (
-          <li key={book.id}>
-            <h3>{book.title}</h3>
-            <p>{book.authors.map((a) => a.name).join(", ")}</p>
-          </li>
-        ))}
-      </ul>
+    <Home books={filteredBooks} />
     </div>
   );
 }
 
 export default App;
+
+
