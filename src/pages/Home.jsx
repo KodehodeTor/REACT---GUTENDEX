@@ -6,7 +6,7 @@ export default function Home({ books }) {
           <h3>{book.title}</h3>
           <p>
             Author: {book.authors.map((a) => a.name).join(", ") || "Unknown"}
-          </p>{" "}
+          </p>
           <span> Downloads: {book.download_count}</span>
         </article>
       ))}
