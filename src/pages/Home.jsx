@@ -5,7 +5,7 @@ export default function Home({ books }) {
         <article key={book.id} style={styles.card}>
           <h3>{book.title}</h3>
           <p>
-            Author: {book.authors.map((a) => a.mame).join(", ") || "Unknown"}
+            Author: {book.authors.map((a) => a.name).join(", ") || "Unknown"}
           </p>{" "}
           <span> Downloads: {book.download_count}</span>
         </article>
