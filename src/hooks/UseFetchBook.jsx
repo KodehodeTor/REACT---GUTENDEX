@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function UseFetchBook(url = "https://gutendex.com") {
+export default function useFetchBook(url = "https://gutendex.com") {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
