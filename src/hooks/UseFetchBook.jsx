@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 
-export default function useFetchBook(url = "https://gutendex.com") {
+export default function useFetchBook(url = "https://gutendex.com/books/") {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     setLoading(true);
-    fetch("https://gutendex.com/books/")
+    fetch(url)
       .then((res) => res.json())
       .then((data) => {
         setBooks(data.results);
