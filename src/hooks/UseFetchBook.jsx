@@ -11,7 +11,9 @@ export default function useFetchBook(url = "https://gutendex.com/books/") {
     setLoading(true);
     setError(null);
     fetch(url)
-      .then((res) => res.json())
+      .then((res) => {
+        return res.json();
+      })
       .then((data) => {
         setBooks(data.results);
         setNext(data.next);

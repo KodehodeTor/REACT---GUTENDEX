@@ -6,10 +6,11 @@ import Home from "./pages/Home.jsx";
 
 export default function App() {
   const [searchItem, setSearchItem] = useState(``);
-  const { books, loading, error } = useFetchBook(url);
   //Pagination
   const [page, setPage] = useState(1);
   const url = `https://gutendex.com/books/?page=${page}`;
+
+  const { books, loading, error, next, previous } = useFetchBook(url);
 
   const handleInputChange = (e) => {
     const searchTerm = e.target.value;
@@ -45,6 +46,15 @@ export default function App() {
         />
       </div>
       <Home books={filteredBooks} />
+      <div>
+        <button onClick={handlePrevious} disabled={!previous}>
+          Previous
+        </button>
+        <span>page {page}</span>
+        <button onClick={handleNext} disabled={!next}>
+          Next
+        </button>
+      </div>
     </div>
   );
 }
