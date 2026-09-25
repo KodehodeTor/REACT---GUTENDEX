@@ -1,10 +1,7 @@
 NOTES FOR TOR:
 Context structure:
 
-App -> SearchBar
-|-> BookList
-| |-> BookCard
-|-> Pagination??
+Implementer TanStack Query og Axios.
 
 Krav til innhold og funksjonalitet
 
