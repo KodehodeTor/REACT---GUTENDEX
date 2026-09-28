@@ -39,6 +39,7 @@ ol[role="list"] {
 body {
   min-height: 100vh;
   line-height: 1.5;
+  background-color:;
 }
 
 /* Set shorter line heights on headings and interactive elements */
@@ -90,4 +91,26 @@ textarea:not([rows]) {
 /* Anything that has been anchored to should have extra scroll margin */
 :target {
   scroll-margin-block: 5ex;
+}
+
+body {
+  background-color: #f0ede9;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+  color: #1a1d20;
+  padding: 40px;
+}
+
+button {
+  background-color: #d4af37;
 }
