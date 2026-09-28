@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useFetchBook from "../hooks/useFetchBook.jsx";
 import CategoryMenu from "../components/CategoryMenu.jsx";
+import BookCard from "../components/BookCard.jsx";
 
 export default function Home() {
   // States; input stores whats typed - Term stores the confirmed search to Gutendex.
@@ -71,13 +72,7 @@ export default function Home() {
 
       <div style={styles.grid}>
         {books.map((book) => (
-          <article key={book.id} style={styles.card}>
-            <h3>{book.title}</h3>
-            <p>
-              Author: {book.authors.map((a) => a.name).join(", ") || "Unknown"}
-            </p>
-            <span> Downloads: {book.download_count}</span>
-          </article>
+          <BookCard key={book.id} book={book} />
         ))}
       </div>
 
