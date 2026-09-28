@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useFetchBook from "../hooks/useFetchBook";
+import CategoryMenu from "../components/CategoryMenu";
 
 export default function Home() {
   // States; input stores whats typed - Term stores the confirmed search to Gutendex.
@@ -7,12 +8,31 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   // Stores URL of the page we are viewing:
   const [pageUrl, setPageUrl] = useState(null);
+  // Select catagory state
+  const [selectedCatagory, setSelectedCategory] = useState("");
 
-  const searchUrl = searchTerm
-    ? `/api/books/?search=${encodeURIComponent(searchTerm)}`
-    : `/api/books/`;
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    setPageUrl(null);
+  };
 
-  // If pageUrl exist we use it, if not the orginal search URL is used.
+  //Build API parameters:
+  const params = new URLSearchParams();
+
+  // Add search term if one exist
+  if (searchTerm) {
+    params.set("search", searchTerm);
+  }
+
+  //Add category if there is one:
+  if (selectedCatagory) {
+    params.set("topic", selectedCatagory);
+  }
+
+  //Construct the URL
+  const searchUrl = `/api/books/?€{params.toString()}`;
+
+  //Use pagination URL if available, if not use search URL.
   const url = pageUrl || searchUrl;
 
   const { books, loading, error, next, previous } = useFetchBook(url);
