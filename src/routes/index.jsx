@@ -1,5 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
+import BookDetails from "../pages/BookDetail.jsx";
+import BookFavorites from "../pages/BookFavorites.jsx";
 
 export const router = createBrowserRouter([
   {
@@ -8,19 +10,15 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        // element: <Home/>
-      },
-      {
-        path: "books",
-        // element: <Books />
+        element: <Home />,
       },
       {
         path: "books/:id",
-        // element: <BookDetails />
+        element: <BookDetails />,
       },
       {
         path: "favorites",
-        // element: <BookFavorites />,
+        element: <BookFavorites />,
       },
     ],
   },
@@ -29,5 +27,3 @@ export const router = createBrowserRouter([
     element: <h1>404</h1>,
   },
 ]);
-
-export { router };
