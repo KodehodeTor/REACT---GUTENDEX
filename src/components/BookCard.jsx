@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
+import { useFavorites } from "../context/FavoritesContext.jsx";
 
 export default function BookCard({ book }) {
   const cover = book.formats["image/jpeg"];
+  const { toggleFavorite, isFavorite } = useFavorites();
+  const favorite = isFavorite(book.id);
 
   return (
     <Link to={`/books/${book.id}`}>
@@ -19,6 +22,15 @@ export default function BookCard({ book }) {
           Author: {book.authors.map((a) => a.name).join(", ") || "Unknwon"}{" "}
         </p>
         <span>Downloads:{book.download_count}</span>
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            toggleFavorite(book);
+          }}
+        >
+          {favorite ? "Remove from favorites" : "Add to favorites"}
+        </button>
       </article>
     </Link>
   );
