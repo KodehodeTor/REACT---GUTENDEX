@@ -131,3 +131,7 @@ input.SearchBar {
   height: 37.6px;
   border-radius: 6px;
 }
+
+select {
+  height: 37.6px;
+}
