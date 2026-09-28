@@ -17,7 +17,7 @@ export default function BookDetails() {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch(`/api/books/${id}`, {
+        const response = await fetch(`/api/books/${id}/`, {
           signal: controller.signal,
         });
         if (!response.ok) {
