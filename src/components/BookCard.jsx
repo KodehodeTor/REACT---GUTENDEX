@@ -43,9 +43,11 @@ const styles = {
     border: "1px solid #374151",
     padding: "20x",
     borderRadius: "12px",
-    boxShadow: "0 6px 20px rgba (0,0,0,0.25)",
+    boxShadow:
+      "0 6px 20px rgba(0,0,0,0.25), 0 4px 6px -4px rgba(0, 0, 0, 0.05)",
     display: "flex",
     flexDirection: "column",
+    marginTop: "30px",
   },
   cover: {
     width: "100%",
