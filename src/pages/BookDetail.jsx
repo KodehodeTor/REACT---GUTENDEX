@@ -43,5 +43,40 @@ export default function BookDetails() {
   if (error) return <p>Error: {error}</p>;
   if (!book) return <p>Book not found!</p>;
 
-  return <div>BookDetails</div>;
+  return (
+    <main>
+      <Link to="/">Back to Books</Link>
+      <h1>{book.title}</h1>
+
+      <img src={book.formats["image/jpeg"]} alt={`Cover of ${book.title}`} />
+
+      <p>Author: {book.authors.map((a) => a.name).join(", ") || "Uknown"}</p>
+
+      <p>Downloads: {book.download_count}</p>
+
+      <p>Languages: {book.languages.join(", ")} </p>
+
+      <h2>Subjects</h2>
+
+      <ul>
+        {book.subjects.map((subject) => (
+          <li key={subject}>{subject}</li>
+        ))}
+      </ul>
+
+      <h2>Available formats</h2>
+
+      <ul>
+        {Object.entries(book.formats)
+          .filter(([format]) => !format.startsWith("image/"))
+          .map(([format, link]) => (
+            <li key={format}>
+              <a href={link} target="_blank" rel="noopner noreferrer">
+                {format}
+              </a>
+            </li>
+          ))}
+      </ul>
+    </main>
+  );
 }
