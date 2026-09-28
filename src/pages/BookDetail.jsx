@@ -17,17 +17,17 @@ export default function BookDetails() {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch (`/api/books/${id}`, {
+        const response = await fetch(`/api/books/${id}`, {
           signal: controller.signal,
         });
         if (!response.ok) {
           throw new Error("Failed to fetch details");
         }
         const data = await response.json();
-        setBook(data)
+        setBook(data);
       } catch (err) {
-        if(err.name !== "AbortError") {
-          setError(err.message):
+        if (err.name !== "AbortError") {
+          setError(err.message);
         }
       } finally {
         if (!controller.signal.aborted) {
@@ -35,13 +35,13 @@ export default function BookDetails() {
         }
       }
     };
-    feckBook();
+    fetchBook();
     return () => controller.abort();
   }, [id]);
 
-  if (loading) return <p>Loading details...</p>
+  if (loading) return <p>Loading details...</p>;
   if (error) return <p>Error: {error}</p>;
-  if (!book) return <p>Book not found!</p>
+  if (!book) return <p>Book not found!</p>;
 
   return <div>BookDetails</div>;
 }
