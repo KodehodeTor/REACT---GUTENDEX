@@ -35,6 +35,9 @@ export default function useFetchBook(url = "/api/books/") {
     setError(null);
     fetch(url)
       .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP: error: ${res.status}`);
+        }
         return res.json();
       })
       .then((data) => {
