@@ -113,4 +113,16 @@ body {
 
 button {
   background-color: #d4af37;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+h1 {
+  color: #363c45;
+  font-size: 2.5rem;
+  margin-bottom: 24px;
 }
