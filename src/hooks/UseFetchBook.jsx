@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-//Cache for loading issues:
+//Cache for loading issues. Creates a new map
 const bookCache = new Map();
 
 export default function useFetchBook(url = "https://gutendex.com/books/") {
