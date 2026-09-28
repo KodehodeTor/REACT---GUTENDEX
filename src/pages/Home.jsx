@@ -30,7 +30,7 @@ export default function Home() {
   }
 
   //Construct the URL
-  const searchUrl = `/api/books/?€{params.toString()}`;
+  const searchUrl = `/api/books/?${params.toString()}`;
 
   //Use pagination URL if available, if not use search URL.
   const url = pageUrl || searchUrl;
