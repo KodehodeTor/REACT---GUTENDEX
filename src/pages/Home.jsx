@@ -53,8 +53,8 @@ export default function Home() {
           className="SearchBar"
           type="search"
           placeholder="Seach book or author"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
         />
 
         <button type="submit">Search</button>
@@ -68,6 +68,7 @@ export default function Home() {
         selectedCategory={selectedCategory}
         categoryChange={handleCategoryChange}
       />
+
       <div style={styles.grid}>
         {books.map((book) => (
           <article key={book.id} style={styles.card}>
@@ -88,7 +89,7 @@ export default function Home() {
           Previous
         </button>
 
-        <button onClick={() => setPageUrl(next)} diabled={!next || loading}>
+        <button onClick={() => setPageUrl(next)} disabled={!next || loading}>
           Next
         </button>
       </div>
