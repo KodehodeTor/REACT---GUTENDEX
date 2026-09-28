@@ -32,6 +32,10 @@ export default function Home() {
 
         <button type="submit">Search</button>
       </form>
+
+      {searchTerm && <p>Showing results for: {searchTerm}</p>}
+      {loading && <p>Searching Gutendex, please wait...</p>}
+      {error && <p>Error: {error}</p>}
       <div style={styles.grid}>
         {books.map((book) => (
           <article key={book.id} style={styles.card}>
