@@ -5,10 +5,15 @@ export default function Home() {
   // States; input stores whats typed - Term stores the confirmed search to Gutendex.
   const [searchInput, setSearchInput] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+  // Stores URL of the page we are viewing:
+  const [pageUrl, setPageUrl] = useState(null);
 
-  const url = searchTerm
+  const searchUrl = searchTerm
     ? `/api/books/?search=${encodeURIComponent(searchTerm)}`
     : `/api/books/`;
+
+  // If pageUrl exist we use it, if not the orginal search URL is used.
+  const url = pageUrl || searchUrl;
 
   const { books, loading, error, next, previous } = useFetchBook(url);
 
@@ -16,6 +21,8 @@ export default function Home() {
   const handleSearch = (e) => {
     // Prevents the form from reloading page.
     e.preventDefault();
+    // Every page starts on page 1
+    setPageUrl(null);
     setSearchTerm(searchInput.trim());
   };
 
@@ -46,6 +53,19 @@ export default function Home() {
             <span> Downloads: {book.download_count}</span>
           </article>
         ))}
+      </div>
+
+      <div className="pagination">
+        <button
+          onClick={() => setPageUrl(previous)}
+          disabled={!previous || loading}
+        >
+          Previous
+        </button>
+
+        <button onClick={() => setPageUrl(next)} diabled={!next || loading}>
+          Next
+        </button>
       </div>
     </main>
   );
