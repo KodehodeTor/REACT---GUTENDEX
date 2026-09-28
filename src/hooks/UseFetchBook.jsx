@@ -4,7 +4,9 @@ import { useState, useEffect } from "react";
 const toProxyUrl = (url) => {
   if (!url) return null;
 
-  return url.replace("https://gutendex.com", "/api");
+  const parsedUrl = new URL(url, "https://gutendex.com");
+
+  return `/api${parsedUrl.pathname}${parsedUrl.search}`;
 };
 
 //Cache for loading issues. Creates a new map

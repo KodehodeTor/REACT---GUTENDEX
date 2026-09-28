@@ -21,9 +21,19 @@ export default function BookDetails() {
           signal: controller.signal,
         });
         if (!response.ok) {
-          throw new Error("Failed to fetch details");
+          throw new Error(`HTTP error:${response.status}`);
         }
+        const contentType = response.headers.get("content-type");
+
+        if (!contentType?.includes("application/json")) {
+          throw new Error(
+            `Expected JSON, received ${contentType} from ${response.url}`,
+          );
+        }
+        //Convert the response into a JS object:
         const data = await response.json();
+
+        //Save book in React state
         setBook(data);
       } catch (err) {
         if (err.name !== "AbortError") {
