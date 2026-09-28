@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
+import { useFavorites } from "../context/FavoritesContext.jsx";
 
 export default function NavBar() {
+  const { favorites } = useFavorites();
   return (
     <nav>
-      <Link to="/">Home</Link>
-      <Link to="/books?topic=kategori">Kategori</Link>
-      <Link to="/BookFavorites">BookFavs</Link>
-      <Link to="/BookDetail">BookDetail</Link>
+      <Link to="/">
+        Home <br></br>{" "}
+      </Link>
+      <Link to="/favorites">Favorites: ({favorites.length})</Link>
     </nav>
   );
 }

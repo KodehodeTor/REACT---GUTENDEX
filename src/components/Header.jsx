@@ -1,3 +1,10 @@
+import NavBar from "./NavBar.jsx";
+
 export default function Header() {
-  return <div>Header</div>;
+  return (
+    <header>
+      <h1>Porject Gutendex</h1>
+      <NavBar />
+    </header>
+  );
 }

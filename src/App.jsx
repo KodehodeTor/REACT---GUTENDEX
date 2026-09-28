@@ -1,9 +1,10 @@
 import { Outlet } from "react-router-dom";
+import Header from "./components/Header.jsx";
 
 export default function App() {
   return (
     <div className="app">
-      <h1>Project Gutendex</h1>
+      <Header />
       <Outlet />
     </div>
   );
