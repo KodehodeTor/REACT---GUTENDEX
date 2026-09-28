@@ -139,6 +139,7 @@ select {
 
 p,
 span,
-h3 {
+h3,
+img {
   margin: 10px;
 }
