@@ -2,7 +2,7 @@ export default function BookCard({ book }) {
   const cover = book.formats["image/jpeg"];
 
   return (
-    <article style={StyleSheet.card}>
+    <article style={styles.card}>
       {cover && (
         <img src={cover} alt={`Cover of ${book.title}`} style={styles.cover} />
       )}
