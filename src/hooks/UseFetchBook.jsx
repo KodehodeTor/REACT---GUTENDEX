@@ -1,9 +1,16 @@
 import { useState, useEffect } from "react";
 
+// Converts Gutendex URLs to our Vite proxy URLs
+const toProxyUrl = (url) => {
+  if (!url) return null;
+
+  return url.replace("https://gutendex.com", "/api");
+};
+
 //Cache for loading issues. Creates a new map
 const bookCache = new Map();
 
-export default function useFetchBook(url = "api/books/") {
+export default function useFetchBook(url = "/api/books/") {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -31,9 +38,19 @@ export default function useFetchBook(url = "api/books/") {
         return res.json();
       })
       .then((data) => {
-        setBooks(data.results);
-        setNext(data.next);
-        setPrevious(data.previous);
+        //Converts pagination URLs (next & previous)
+        const normalData = {
+          ...data,
+          next: toProxyUrl(data.next),
+          previous: toProxyUrl(data.previous),
+        };
+
+        //Save converted data to cache:
+        bookCache.set(url, normalData);
+
+        setBooks(normalData.results);
+        setNext(normalData.next);
+        setPrevious(normalData.previous);
         setLoading(false);
       })
       .catch((err) => {
