@@ -119,6 +119,7 @@ button {
   border-radius: 8px;
   font-weight: 500;
   cursor: pointer;
+  margin: 10px;
 }
 
 h1 {
@@ -134,4 +135,10 @@ input.SearchBar {
 
 select {
   height: 37.6px;
+}
+
+p,
+span,
+h3 {
+  margin: 10px;
 }
