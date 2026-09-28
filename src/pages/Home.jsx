@@ -9,7 +9,7 @@ export default function Home() {
   // Stores URL of the page we are viewing:
   const [pageUrl, setPageUrl] = useState(null);
   // Select catagory state
-  const [selectedCatagory, setSelectedCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
@@ -25,8 +25,8 @@ export default function Home() {
   }
 
   //Add category if there is one:
-  if (selectedCatagory) {
-    params.set("topic", selectedCatagory);
+  if (selectedCategory) {
+    params.set("topic", selectedCategory);
   }
 
   //Construct the URL
@@ -65,7 +65,7 @@ export default function Home() {
       {error && <p>Error: {error}</p>}
 
       <CategoryMenu
-        selectedCatagory={selectedCatagory}
+        selectedCategory={selectedCategory}
         categoryChange={handleCategoryChange}
       />
       <div style={styles.grid}>
