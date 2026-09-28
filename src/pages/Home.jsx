@@ -1,6 +1,6 @@
 import { useState } from "react";
-import useFetchBook from "../hooks/useFetchBook";
-import CategoryMenu from "../components/CategoryMenu";
+import useFetchBook from "../hooks/useFetchBook.jsx";
+import CategoryMenu from "../components/CategoryMenu.jsx";
 
 export default function Home() {
   // States; input stores whats typed - Term stores the confirmed search to Gutendex.
@@ -63,6 +63,11 @@ export default function Home() {
       {searchTerm && <p>Showing results for: {searchTerm}</p>}
       {loading && <p>Searching Gutendex, please wait...</p>}
       {error && <p>Error: {error}</p>}
+
+      <CategoryMenu
+        selectedCatagory={selectedCatagory}
+        categoryChange={handleCategoryChange}
+      />
       <div style={styles.grid}>
         {books.map((book) => (
           <article key={book.id} style={styles.card}>
