@@ -37,14 +37,7 @@ export default function App() {
   return (
     <div className="app">
       <h1>Project Gutendex</h1>
-      <div>
-        <input
-          type="text"
-          value={searchItem}
-          onChange={handleInputChange}
-          placeholder="Type to search"
-        />
-      </div>
+
       <Home books={filteredBooks} />
       <div>
         <button onClick={handlePrevious} disabled={!previous}>
