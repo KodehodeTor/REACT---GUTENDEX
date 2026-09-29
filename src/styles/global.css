@@ -93,6 +93,8 @@ textarea:not([rows]) {
   scroll-margin-block: 5ex;
 }
 
+/* Body style */
+
 body {
   background-color: #f0ede9;
   font-family:
@@ -111,6 +113,7 @@ body {
   padding: 40px;
 }
 
+/* Button style */
 button {
   background-color: #d4af37;
   color: #ffffff;
@@ -122,11 +125,7 @@ button {
   margin: 10px;
 }
 
-h1 {
-  color: #363c45;
-  font-size: 2.5rem;
-  margin-bottom: 24px;
-}
+/* Searchbar and select */
 
 input.SearchBar {
   height: 37.6px;
@@ -135,6 +134,13 @@ input.SearchBar {
 
 select {
   height: 37.6px;
+}
+
+/* Extra styling for h1, p, span, h3, img and a. */
+h1 {
+  color: #363c45;
+  font-size: 2.5rem;
+  margin-bottom: 24px;
 }
 
 p,
