@@ -1,3 +1,4 @@
+// Categories
 export const categories = [
   "Fiction",
   "Mystery",
