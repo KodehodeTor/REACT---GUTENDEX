@@ -4,6 +4,7 @@ import BookDetails from "../pages/BookDetail.jsx";
 import BookFavorites from "../pages/BookFavorites.jsx";
 import Home from "../pages/Home.jsx";
 
+// BrowserRouter - links path with elements.
 export const router = createBrowserRouter([
   {
     path: "/",
