@@ -1,5 +1,6 @@
 import NavBar from "./NavBar.jsx";
 
+// Returns "Project Gutendex" in h1 and NavBar.
 export default function Header() {
   return (
     <header>
